@@ -16,14 +16,19 @@ class EventHandler:
                     sys.exit()
                 case pg.MOUSEBUTTONDOWN:
                     mouse_pos = pg.mouse.get_pos()
-                    self.handle_pressing(mouse_pos)
+                    self.handle_press(mouse_pos)
                 case pg.MOUSEBUTTONUP:
                     self.handle_release()
 
-    def handle_pressing(self, mouse_pos: tuple[int, int]) -> None:
+    def handle_press(self, mouse_pos: tuple[int, int]) -> None:
         for button in self.buttons:
             if button.contains(mouse_pos):
                 button.hold()
+                return
+        
+        if self.grid.contains(mouse_pos):
+            # TODO: be able to set robotpos and objecpos by mouse_pos
+            pass
 
     def handle_release(self):
         for button in self.buttons:

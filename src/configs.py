@@ -54,9 +54,10 @@ SCREEN_HEIGHT = (DEFAULT_MAP_HEIGHT + 10) * TILESIZE
 
 MAP_DEVIATION = (SCREEN_HEIGHT - DEFAULT_MAP_HEIGHT * TILESIZE) // 2 - 3 * TILESIZE
 MAP_POS = (MAP_DEVIATION, MAP_DEVIATION)
+MAP_ENDPOS = (MAP_DEVIATION + DEFAULT_MAP_WIDTH * TILESIZE, MAP_DEVIATION + DEFAULT_MAP_HEIGHT * TILESIZE)
 
 # <a href="https://www.flaticon.com/free-icons/robot" title="robot icons">Robot icons created by dhika.rahmat  - Flaticon</a>
-SCREEN_ICON = pg.image.load("./assets/robot.png")
+SCREEN_ICON = pg.image.load("./assets/robotico.png")
 SCREEN_BG_COLOR = pg.Color(224, 222, 222)
 
 OPEN_COLOR = pg.Color("white")
