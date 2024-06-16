@@ -18,16 +18,14 @@ class EventHandler:
                     mouse_pos = pg.mouse.get_pos()
                     self.handle_pressing(mouse_pos)
                 case pg.MOUSEBUTTONUP:
-                    mouse_pos = pg.mouse.get_pos()
-                    self.handle_release(mouse_pos)
+                    self.handle_release()
 
     def handle_pressing(self, mouse_pos: tuple[int, int]) -> None:
         for button in self.buttons:
             if button.contains(mouse_pos):
                 button.hold()
 
-    def handle_release(self, mouse_pos: tuple[int, int]):
+    def handle_release(self):
         for button in self.buttons:
             if button.is_pressed():
                 button.release()
-                button.do_action()
