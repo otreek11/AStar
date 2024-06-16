@@ -28,8 +28,8 @@ DEFAULT_MAP = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
 
-DEFAULT_MAP_WIDTH = 25
-DEFAULT_MAP_HEIGHT = 25
+DEFAULT_MAP_WIDTH = len(DEFAULT_MAP)
+DEFAULT_MAP_HEIGHT = len(DEFAULT_MAP[0])
 
 TILESIZE = 16
 BORDER_SIZE = 1
