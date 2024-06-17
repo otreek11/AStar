@@ -56,10 +56,11 @@ class GridMap:
             pg.draw.rect(auxsurf, pg.Color("black"), pg.Rect((0, 0), (TILESIZE, TILESIZE)), BORDER_SIZE)
             surf.blit(auxsurf, auxrect)
 
-    def contains(p: tuple[int, int]) -> bool:
-        return (MAP_POS[0] <= p[0] <= MAP_ENDPOS[0] and MAP_POS[1] <= p[1] <= MAP_ENDPOS[1])
 
     def AStarTrajectory(self) -> Trajectory:
         if self.robotpos == None or self.objecpos == None: return None
         # TODO: implement A* Algorithm
         pass
+
+    def contains(p: tuple[int, int]) -> bool:
+        return (MAP_POS[0] <= p[0] <= MAP_ENDPOS[0] and MAP_POS[1] <= p[1] <= MAP_ENDPOS[1])

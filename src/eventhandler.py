@@ -26,7 +26,7 @@ class EventHandler:
                 button.hold()
                 return
         
-        if self.grid.contains(mouse_pos):
+        if GridMap.contains(mouse_pos):
             # TODO: be able to set robotpos and objecpos by mouse_pos
             pass
 
