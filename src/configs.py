@@ -69,3 +69,13 @@ OBJECTIVE_COLOR = pg.Color("green")
 TRAJECTORY_COLOR = pg.Color("blue")
 
 COLORS = (OPEN_COLOR, WALL_COLOR)
+
+WALL_KEY = pg.K_z
+OPEN_KEY = pg.K_x
+ROBOT_KEY = pg.K_c
+OBJECTIVE_KEY = pg.K_v
+
+WALL_KEY_TEXT = FONT.render("Z: Wall", False, BUTTON_BORDER_COLOR)
+OPEN_KEY_TEXT = FONT.render("X: Open", False, BUTTON_BORDER_COLOR)
+ROBOT_KEY_TEXT = FONT.render("C: Robot", False, BUTTON_BORDER_COLOR)
+OBJECTIVE_KEY_TEXT = FONT.render("V: Objective", False, BUTTON_BORDER_COLOR)

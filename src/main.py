@@ -25,13 +25,13 @@ default_button = Button(BUTTON_IMG, default_button_rect, lambda : map.set_grid(D
 clear_button_rect = BUTTON_IMG.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 2 * BUTTON_HEIGHT)))
 clear_button = Button(BUTTON_IMG, clear_button_rect, lambda : map.clear(), "Clear")
 
-def Run(map: GridMap, surf: pg.Surface) -> None:
-    trajectory = map.AStarTrajectory()
-    if trajectory != None:
-        trajectory.get_drawn(surf)
-
 run_button_rect = BUTTON_IMG.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 4 * BUTTON_HEIGHT)))
-run_button = Button(BUTTON_IMG, run_button_rect, lambda : Run(map, map_surf), "Run")
+run_button = Button(BUTTON_IMG, run_button_rect, lambda : map.AStarTrajectory(), "Run")
+
+wk_rect = WALL_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 6 * BUTTON_HEIGHT)))
+op_rect = OPEN_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 7 * BUTTON_HEIGHT)))
+rob_rect = ROBOT_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 8 * BUTTON_HEIGHT)))
+obj_rect = OBJECTIVE_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 9 * BUTTON_HEIGHT)))
 
 if __name__ == "__main__":
     map.set_grid(DEFAULT_MAP)
@@ -48,6 +48,11 @@ if __name__ == "__main__":
         
         for button in buttons:
             button.get_drawn(screen)
+
+        screen.blit(WALL_KEY_TEXT, wk_rect)
+        screen.blit(OPEN_KEY_TEXT, op_rect)
+        screen.blit(ROBOT_KEY_TEXT, rob_rect)
+        screen.blit(OBJECTIVE_KEY_TEXT, obj_rect)
 
         handler.run()
         pg.display.update()

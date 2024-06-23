@@ -19,6 +19,10 @@ class EventHandler:
                     self.handle_press(mouse_pos)
                 case pg.MOUSEBUTTONUP:
                     self.handle_release()
+                case pg.KEYDOWN:
+                    self.grid.trajectory = None
+                    mouse_pos = pg.mouse.get_pos()
+                    self.handle_keyboard(mouse_pos)
 
     def handle_press(self, mouse_pos: tuple[int, int]) -> None:
         for button in self.buttons:
@@ -26,11 +30,23 @@ class EventHandler:
                 button.hold()
                 return
         
-        if GridMap.contains(mouse_pos):
-            # TODO: be able to set robotpos and objecpos by mouse_pos
-            pass
 
     def handle_release(self):
         for button in self.buttons:
             if button.is_pressed():
                 button.release()
+
+    def handle_keyboard(self, mouse_pos: tuple[int, int]) -> None:
+        if GridMap.contains(mouse_pos):
+            cell = GridMap.get_cell(mouse_pos)
+            keys = pg.key.get_pressed()
+            if keys[WALL_KEY]:
+                self.grid.set_wall(cell)
+            elif keys[OPEN_KEY]:
+                self.grid.set_open(cell)
+            elif keys[ROBOT_KEY]:
+                if self.grid.is_open(cell):
+                    self.grid.robotpos = cell
+            elif keys[OBJECTIVE_KEY]:
+                if self.grid.is_open(cell):
+                    self.grid.objecpos = cell
