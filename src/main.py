@@ -28,10 +28,10 @@ clear_button = Button(BUTTON_IMG, clear_button_rect, lambda : map.clear(), "Clea
 run_button_rect = BUTTON_IMG.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 4 * BUTTON_HEIGHT)))
 run_button = Button(BUTTON_IMG, run_button_rect, lambda : map.AStarTrajectory(), "Run")
 
-wk_rect = WALL_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 6 * BUTTON_HEIGHT)))
-op_rect = OPEN_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 7 * BUTTON_HEIGHT)))
-rob_rect = ROBOT_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 8 * BUTTON_HEIGHT)))
-obj_rect = OBJECTIVE_KEY_TEXT.get_rect(midtop = (SCREEN_WIDTH//2 + 14 * TILESIZE, MAP_DEVIATION + TILESIZE * (1 + 9 * BUTTON_HEIGHT)))
+wk_rect = WALL_KEY_TEXT.get_rect(topleft = (run_button_rect.bottomleft[0], run_button_rect.bottomleft[1] + 3 * TILESIZE))
+op_rect = OPEN_KEY_TEXT.get_rect(topleft = wk_rect.bottomleft)
+rob_rect = ROBOT_KEY_TEXT.get_rect(topleft = op_rect.bottomleft)
+obj_rect = OBJECTIVE_KEY_TEXT.get_rect(topleft = rob_rect.bottomleft)
 
 if __name__ == "__main__":
     map.set_grid(DEFAULT_MAP)
