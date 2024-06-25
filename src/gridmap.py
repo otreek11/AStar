@@ -71,7 +71,7 @@ class GridMap:
         self.trajectory = None
         if self.robotpos is None or self.objecpos is None or self.robotpos == self.objecpos: return
         
-        opens = [(0, self.robotpos)]
+        opens = [(GridMap.manhattan(self.robotpos, self.objecpos), self.robotpos)]
         closeds: set[tuple[int, int]] = set()
         came_from: dict[tuple[int, int], tuple[int, int]] = {}
         g_score: dict[tuple[int, int], float] = {self.robotpos: 0}
@@ -93,12 +93,12 @@ class GridMap:
                 if neighbor in closeds:
                     continue
                 
-                tentative_g_score = g_score[current] + 1
+                tested_g_score = g_score[current] + 1
                 
-                if neighbor not in [n[1] for n in opens] or tentative_g_score < g_score.get(neighbor, float('inf')):
+                if neighbor not in [n[1] for n in opens] or tested_g_score < g_score.get(neighbor, float('inf')):
                     came_from[neighbor] = current
-                    g_score[neighbor] = tentative_g_score
-                    f_score[neighbor] = tentative_g_score + GridMap.manhattan(neighbor, self.objecpos)
+                    g_score[neighbor] = tested_g_score
+                    f_score[neighbor] = tested_g_score + GridMap.manhattan(neighbor, self.objecpos)
                     heappush(opens, (f_score[neighbor], neighbor))
     
     def get_neighbors(self, k: tuple[int, int]) -> list[tuple[int, int]]:
