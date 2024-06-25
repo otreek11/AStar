@@ -103,7 +103,7 @@ class GridMap:
     
     def get_neighbors(self, k: tuple[int, int]) -> list[tuple[int, int]]:
         neighbors = []
-        directions: list[tuple[int, int]] = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, 1), (1, -1), (-1, -1)]
+        directions: list[tuple[int, int]] = [(0, 1), (0, -1), (1, 0), (-1, 0)] #, (1, 1), (-1, 1), (1, -1), (-1, -1)]
         for direction in directions:
             neighbor = (k[0] + direction[0], k[1] + direction[1])
             if self.contains_cell(neighbor) and self.is_open(neighbor):
